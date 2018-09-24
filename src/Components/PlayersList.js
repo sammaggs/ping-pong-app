@@ -1,21 +1,24 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
-
-const PlayerList = ({playerNames}) => {
+const PlayerList = ({ playerNames }) => {
   return (
-    <section>
-    <h1>{playerNames.length >= 1 ? "Player Names" : null}</h1>
-      <div>
-        <ul>
-          {playerNames.map(player => (
-            <li>{player}</li>
-          ))}
-        </ul>
-      </div>
-      {/* {playerNames.length >= 1 ? 
+    <Fragment>
+      <section>
+        <h1>Player Names</h1>
+        <div>
+          <ul>
+            {playerNames.map(player => (
+              <li>{player}</li>
+            ))}
+          </ul>
+        </div>
+        {/* {playerNames.length >= 1 ? 
     //   <Link/> : null} */}
-    </section>
+      </section>
+      <Button buttonText="Create Fixtures!"/>
+    </Fragment>
   );
 };
 

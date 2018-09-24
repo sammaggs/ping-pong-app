@@ -88,7 +88,7 @@ class HomePage extends Component {
             </Fragment>
           ) : null}
         </div>
-        <PlayersList playerNames={playerNamesArray}/>
+        {playerNamesArray.length >= 1 ? <PlayersList playerNames={playerNamesArray}/> : null}
       </section>
     );
   }

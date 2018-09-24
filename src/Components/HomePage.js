@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
+import PlayersList from './PlayersList';
 
 class HomePage extends Component {
   constructor(props) {
@@ -37,7 +38,8 @@ class HomePage extends Component {
     e.preventDefault();
     let { playerNames, playerNamesArray } = this.state;
     this.setState({
-        playerNamesArray: [...playerNamesArray, playerNames]
+        playerNamesArray: [...playerNamesArray, playerNames],
+        playerNames: ""
     })
   }
 
@@ -50,7 +52,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const { numberOfPlayersValid, error } = this.state;
+    const { playerNames, numberOfPlayersValid, error, playerNamesArray } = this.state;
 
     return (
       <section>
@@ -65,6 +67,7 @@ class HomePage extends Component {
             onClick={e => this.numberOfPlayersSubmit(e)}
             type="submit"
             value="Create Your Tournament!"
+            disabled={numberOfPlayersValid ? "true" : null}
           />
         </form>
         <div>{numberOfPlayersValid ? null : <h1>{error}</h1>}</div>
@@ -74,15 +77,18 @@ class HomePage extends Component {
             <input 
                 type="text"
                 onChange={e => this.handleChangeNames(e)}
+                value={playerNames}
                 />
               <input
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
                 value="Add player names!"
+                placeholder="Enter your name"
               />
-            </Fragment>  
+            </Fragment>
           ) : null}
         </div>
+        <PlayersList playerNames={playerNamesArray}/>
       </section>
     );
   }

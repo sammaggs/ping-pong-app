@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import store from './Data/Store';
 import {
     BrowserRouter as Router,
-    Route,
   } from "react-router-dom";
 
 

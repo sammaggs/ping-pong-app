@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from "react";
-import { Link } from "react-router-dom";
-import PlayersList from './PlayersList';
+import PlayersList from "./PlayersList";
+import FixturesList from "./FixturesList";
 
 class HomePage extends Component {
   constructor(props) {
@@ -34,14 +34,24 @@ class HomePage extends Component {
     }
   }
 
-  playerNamesSubmit(e){
+  playerNamesSubmit(e) {
     e.preventDefault();
     let { playerNames, playerNamesArray } = this.state;
     this.setState({
-        playerNamesArray: [...playerNamesArray, playerNames],
-        playerNames: ""
-    })
+      playerNamesArray: [...playerNamesArray, playerNames],
+      playerNames: ""
+    });
   }
+
+//   onClickDelete(e){
+//       e.preventDefault();
+//       let { playerNamesArray } = this.state;
+//       let
+//       this.setState({
+//           playerNamesArray: 
+//       })
+//   }
+
 
   handleChangePlayers(e) {
     this.setState({ numberOfPlayers: e.target.value });
@@ -52,7 +62,12 @@ class HomePage extends Component {
   }
 
   render() {
-    const { playerNames, numberOfPlayersValid, error, playerNamesArray } = this.state;
+    const {
+      playerNames,
+      numberOfPlayersValid,
+      error,
+      playerNamesArray
+    } = this.state;
 
     return (
       <section>
@@ -74,21 +89,26 @@ class HomePage extends Component {
         <div>
           {numberOfPlayersValid ? (
             <Fragment>
-            <input 
+              <input
                 type="text"
                 onChange={e => this.handleChangeNames(e)}
                 value={playerNames}
-                />
+              />
               <input
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
-                value="Add player names!"
-                placeholder="Enter your name"
+                value="Enter tournament"
+                disabled={playerNames === "" ? "true" : null}
               />
             </Fragment>
           ) : null}
         </div>
-        {playerNamesArray.length >= 1 ? <PlayersList playerNames={playerNamesArray}/> : null}
+        {playerNamesArray.length >= 1 ? (
+          <Fragment>
+          <PlayersList playerNames={playerNamesArray} onClickDelete={this.onClickDelete} />
+          <FixturesList playerNames={playerNamesArray} />
+          </Fragment>  
+        ) : null}
       </section>
     );
   }

@@ -29,7 +29,7 @@ class HomePage extends Component {
       });
     } else {
       this.setState({
-        numberOfPlayersValid: true
+        numberOfPlayersValid: true,
       });
     }
   }
@@ -66,7 +66,8 @@ class HomePage extends Component {
       playerNames,
       numberOfPlayersValid,
       error,
-      playerNamesArray
+      playerNamesArray,
+      numberOfPlayers
     } = this.state;
 
     return (
@@ -83,8 +84,10 @@ class HomePage extends Component {
             type="submit"
             value="Create Your Tournament!"
             disabled={numberOfPlayersValid ? "true" : null}
+            className="btn-success"
           />
         </form>
+        <h4>Players: {numberOfPlayers}</h4>
         <div>{numberOfPlayersValid ? null : <h1>{error}</h1>}</div>
         <div>
           {numberOfPlayersValid ? (
@@ -97,8 +100,9 @@ class HomePage extends Component {
               <input
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
-                value="Enter tournament"
+                value="Enter name"
                 disabled={playerNames === "" ? "true" : null}
+                className="btn-success"
               />
             </Fragment>
           ) : null}
@@ -106,7 +110,7 @@ class HomePage extends Component {
         {playerNamesArray.length >= 1 ? (
           <Fragment>
           <PlayersList playerNames={playerNamesArray} onClickDelete={this.onClickDelete} />
-          <FixturesList playerNames={playerNamesArray} />
+          {playerNamesArray.length >= numberOfPlayers ? <FixturesList playerNames={playerNamesArray} /> : null}
           </Fragment>  
         ) : null}
       </section>

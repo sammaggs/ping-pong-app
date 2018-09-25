@@ -33,7 +33,7 @@ class FixturesList extends Component {
         <section>
           <h1>Fixtures</h1>
         </section>
-        <Button onClick={this.onClickMakeMatches} buttonText="Create Tournament"/>
+        <Button className={"btn-success"} onClick={this.onClickMakeMatches} buttonText="Create Tournament"/>
         <Pairs pairs={pairs} />
       </Fragment>
     );

@@ -7,7 +7,6 @@ class Pairs extends Component {
   }
 
   renderPairs() {
-    // pass pairs as prop
     this.props.pairs.map(pair => {
       return <li key={pair.join("-")}>{pair.join(" vs ")}</li>;
     });

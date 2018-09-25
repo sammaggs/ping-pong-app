@@ -24,9 +24,9 @@ class FixturesList extends Component {
     })
   }
 
-  render() {
 
-    const { pairs } = this.state;
+  render() {
+    const pairs  = [...this.state];
 
     return (
       <Fragment>

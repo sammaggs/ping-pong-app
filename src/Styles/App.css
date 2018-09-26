@@ -6320,5 +6320,8 @@ a.text-dark:hover, a.text-dark:focus {
 .match-style {
   font-size: 2em
 }
+  .submit-button {
+    margin-left: 15px
+  }
 
 

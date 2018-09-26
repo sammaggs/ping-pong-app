@@ -79,13 +79,14 @@ class HomePage extends Component {
             type="number"
             pattern="[0-9]*"
             onChange={e => this.handleChangePlayers(e)}
+            placeholder='0'
           />
           <input
             onClick={e => this.numberOfPlayersSubmit(e)}
             type="submit"
             value="Create Your Tournament!"
             disabled={numberOfPlayersValid ? "true" : null}
-            className="btn-success"
+            className="btn-success btn submit-button"
           />
         </form>
         <h4>Players: {numberOfPlayers}</h4>
@@ -97,13 +98,14 @@ class HomePage extends Component {
                 type="text"
                 onChange={e => this.handleChangeNames(e)}
                 value={playerNames}
+                placeholder='Enter name here....'
               />
               <input
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
-                value="Enter name"
+                value="Add"
                 disabled={playerNames === "" ? "true" : null}
-                className="btn-success"
+                className="btn-success btn submit-button"
               />
             </Fragment>
           ) : null}

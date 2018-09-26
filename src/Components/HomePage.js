@@ -119,8 +119,8 @@ class HomePage extends Component {
               playerNames={playerNamesArray}
               onClickDelete={this.onClickRemovePlayer}
             />
-            {playerNamesArray.length >= numberOfPlayers ? (
-              <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNamesArray} />
+        {playerNamesArray.length >= numberOfPlayers ? (
+          <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNamesArray} />
             ) : null}
           </Fragment>
         ) : null}

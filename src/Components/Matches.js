@@ -14,7 +14,6 @@ class Matches extends Component {
     this.renderFirstRound = this.renderFirstRound.bind(this);
     this.onClickWinnerP1 = this.onClickWinnerP1.bind(this);
     this.onClickWinnerP2 = this.onClickWinnerP2.bind(this);
-
   }
 
   renderFirstRound() {
@@ -25,7 +24,7 @@ class Matches extends Component {
     })
 
     return pairs.map((pair, i) => {
-      let player1 = [...pair];
+      let player1 = [...pair]; 
       let player2 = player1.splice(0, Math.ceil(player1.length / 2));
       return (
         <div>
@@ -37,20 +36,22 @@ class Matches extends Component {
         </div>
       )
     });
-  }
+  };
 
   onClickWinnerP1() {
-    console.log("Hello you have clicked on a p1 li");
     this.setState = ({
+      ...this.state.p1Clicked,
       p1Clicked: true
-    })
+    });
+    console.log("p1 clicked is", this.state.p1Clicked);
   };
 
   onClickWinnerP2() {
-    console.log("Hello you have clicked on a p2 li");
     this.setState = ({
-      p2Clicked: true
-    })
+      p2CLicked: !this.state.p2Clicked
+      
+    });
+    console.log("p2 clicked is", this.state.p2Clicked);
   };
 
   render() {

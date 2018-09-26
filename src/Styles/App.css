@@ -6317,11 +6317,22 @@ a.text-dark:hover, a.text-dark:focus {
   display: inline-flex;
 }
 
-.match-style {
-  font-size: 2em
-}
-  .submit-button {
+
+.submit-button {
     margin-left: 15px
-  }
+}
+
+.fixture-list {
+  display: table;
+  width: 7em;
+  margin-top: 10px 0px 10px 0px
+}
+
+.fixture {
+  border: 1px solid white;
+  list-style: none;
+  font-size: 1.25em
+
+}
 
 

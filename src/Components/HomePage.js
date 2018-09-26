@@ -103,7 +103,7 @@ class HomePage extends Component {
               <input
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
-                value="Add"
+                value="+"
                 disabled={playerNames === "" ? "true" : null}
                 className="btn-success btn submit-button"
               />
@@ -117,7 +117,7 @@ class HomePage extends Component {
               onClickDelete={this.onClickRemovePlayer}
             />
             {playerNamesArray.length >= numberOfPlayers ? (
-              <FixturesList playerNames={playerNamesArray} />
+              <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNamesArray} />
             ) : null}
           </Fragment>
         ) : null}

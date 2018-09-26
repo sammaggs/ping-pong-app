@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import '../Styles/App.css';
+import '../Styles/Hover.css';
 
 const Header = () => {
     return (

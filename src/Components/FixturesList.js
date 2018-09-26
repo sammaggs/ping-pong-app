@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Pairs from "./Pairs";
+import Matches from "./Matches";
 import Button from './Button';
 
 class FixturesList extends Component {
@@ -26,7 +26,8 @@ class FixturesList extends Component {
 
 
   render() {
-    const {pairs}  = this.state;
+    const { pairs }  = this.state;
+    const { numberOfPlayers } = this.props;
 
     return (
       <Fragment>
@@ -34,7 +35,7 @@ class FixturesList extends Component {
           <h1>Fixtures</h1>
         </section>
         {/* <Button className={"btn-success"} onClick={this.onClickMakeFixtures} buttonText="Create Tournament"/> */}
-        <Pairs onClick={this.onClickMakeFixtures} pairs={pairs} />
+        <Matches numberOfPlayers={numberOfPlayers} onClick={this.onClickMakeFixtures} pairs={pairs} />
       </Fragment>
     );
   }

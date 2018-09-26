@@ -294,7 +294,7 @@ template {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
@@ -360,7 +360,9 @@ mark,
 
 .list-unstyled {
   padding-left: 0;
-  list-style: none; }
+  list-style: none;
+  font-size: 1.25em;
+}
 
 .list-inline {
   padding-left: 0;
@@ -1587,6 +1589,10 @@ textarea.form-control {
       justify-content: center; }
     .form-inline .custom-control-label {
       margin-bottom: 0; } }
+
+.btn-playerList {
+  margin-left: 15px;
+}
 
 .btn {
   display: inline-block;
@@ -6306,5 +6312,9 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
+
+.playerNameDiv {
+  display: inline-flex;
+}
 
 

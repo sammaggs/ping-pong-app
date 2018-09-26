@@ -10,12 +10,13 @@ class HomePage extends Component {
       playerNamesArray: [],
       playerNames: "",
       numberOfPlayersValid: false,
-      error: "",
+      error: ""
     };
     this.handleChangePlayers = this.handleChangePlayers.bind(this);
     this.numberOfPlayersSubmit = this.numberOfPlayersSubmit.bind(this);
     this.handleChangeNames = this.handleChangeNames.bind(this);
     this.playerNamesSubmit = this.playerNamesSubmit.bind(this);
+    this.onClickRemovePlayer = this.onClickRemovePlayer.bind(this);
   }
 
   numberOfPlayersSubmit(e) {
@@ -29,7 +30,7 @@ class HomePage extends Component {
       });
     } else {
       this.setState({
-        numberOfPlayersValid: true,
+        numberOfPlayersValid: true
       });
     }
   }
@@ -43,15 +44,15 @@ class HomePage extends Component {
     });
   }
 
-//   onClickDelete(e){
-//       e.preventDefault();
-//       let { playerNamesArray } = this.state;
-//       let
-//       this.setState({
-//           playerNamesArray: 
-//       })
-//   }
+  onClickRemovePlayer(player) {
+    let playerNamesArray = [...this.state.playerNamesArray];
 
+    playerNamesArray.splice(playerNamesArray.indexOf(player), 1);
+
+    this.setState({
+      playerNamesArray: playerNamesArray
+    });
+  }
 
   handleChangePlayers(e) {
     this.setState({ numberOfPlayers: e.target.value });
@@ -72,7 +73,7 @@ class HomePage extends Component {
 
     return (
       <section>
-        <h1>How many players are playing in your tournament?</h1>
+        <h3>How many players are playing in your tournament?</h3>
         <form>
           <input
             type="number"
@@ -109,9 +110,14 @@ class HomePage extends Component {
         </div>
         {playerNamesArray.length >= 1 ? (
           <Fragment>
-          <PlayersList playerNames={playerNamesArray} onClickDelete={this.onClickDelete} />
-          {playerNamesArray.length >= numberOfPlayers ? <FixturesList playerNames={playerNamesArray} /> : null}
-          </Fragment>  
+            <PlayersList
+              playerNames={playerNamesArray}
+              onClickDelete={this.onClickRemovePlayer}
+            />
+            {playerNamesArray.length >= numberOfPlayers ? (
+              <FixturesList playerNames={playerNamesArray} />
+            ) : null}
+          </Fragment>
         ) : null}
       </section>
     );

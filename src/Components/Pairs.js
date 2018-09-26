@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
+import Button from "./Button";
 
 class Pairs extends Component {
   constructor(props) {
@@ -7,13 +8,27 @@ class Pairs extends Component {
   }
 
   renderPairs() {
-    this.props.pairs.map(pair => {
-      return <li key={pair.join("-")}>{pair.join(" vs ")}</li>;
+    const { pairs } = this.props;
+    return pairs.map((pair, i) => {
+      return (
+        <li key={i}>{pair.join(" vs ")}</li>
+      )
     });
   }
 
   render() {
-    return <ul>{this.renderPairs()}</ul>;
+    return (
+      <Fragment>
+        <Button
+          onClick={this.props.onClick}
+          className={"btn btn-success"}
+          buttonText={"Create Fixtures"}
+        />
+        <ul className="list-unstyled">
+          { this.renderPairs() }
+        </ul>
+      </Fragment>
+    );
   }
 }
 

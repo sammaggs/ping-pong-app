@@ -8,10 +8,10 @@ class FixturesList extends Component {
     this.state = {
       pairs: []
     };
-    this.onClickMakeMatches = this.onClickMakeMatches.bind(this);
+    this.onClickMakeFixtures = this.onClickMakeFixtures.bind(this);
   }
 
-  onClickMakeMatches() {
+  onClickMakeFixtures() {
     const shuffledPlayers = [...this.props.playerNames];
     shuffledPlayers.sort(() => 0.5 - Math.random());
     const pairs = [];
@@ -26,15 +26,15 @@ class FixturesList extends Component {
 
 
   render() {
-    const pairs  = [...this.state];
+    const {pairs}  = this.state;
 
     return (
       <Fragment>
         <section>
           <h1>Fixtures</h1>
         </section>
-        <Button className={"btn-success"} onClick={this.onClickMakeMatches} buttonText="Create Tournament"/>
-        <Pairs pairs={pairs} />
+        {/* <Button className={"btn-success"} onClick={this.onClickMakeFixtures} buttonText="Create Tournament"/> */}
+        <Pairs onClick={this.onClickMakeFixtures} pairs={pairs} />
       </Fragment>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import Matches from "./Matches";
-import Button from './Button';
 
 class FixturesList extends Component {
   constructor(props) {
@@ -31,10 +30,7 @@ class FixturesList extends Component {
 
     return (
       <Fragment>
-        <section>
           <h1>Fixtures</h1>
-        </section>
-        {/* <Button className={"btn-success"} onClick={this.onClickMakeFixtures} buttonText="Create Tournament"/> */}
         <Matches numberOfPlayers={numberOfPlayers} onClick={this.onClickMakeFixtures} pairs={pairs} />
       </Fragment>
     );

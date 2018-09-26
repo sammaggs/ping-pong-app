@@ -22,12 +22,16 @@ class HomePage extends Component {
   numberOfPlayersSubmit(e) {
     e.preventDefault();
     let { numberOfPlayers, error } = this.state;
-
-    if (numberOfPlayers === 0 || numberOfPlayers % 2 !== 0) {
-      error = "Please enter a number that is a multiple of 2";
+    if (numberOfPlayers == 0) {
+      error = "You cannot play with no players!";
       this.setState({
         error: error
-      });
+      })
+    } else if (numberOfPlayers % 4 !== 0 || numberOfPlayers > 16) {
+        error = "You need to have 4, 8 or 16 Players!";
+        this.setState({
+          error: error
+        })
     } else {
       this.setState({
         numberOfPlayersValid: true
@@ -42,13 +46,12 @@ class HomePage extends Component {
       playerNamesArray: [...playerNamesArray, playerNames],
       playerNames: ""
     });
+    console.log(this.state.playerNamesArray)
   }
 
   onClickRemovePlayer(player) {
-    let playerNamesArray = [...this.state.playerNamesArray];
-
+    const playerNamesArray = [...this.state.playerNamesArray];
     playerNamesArray.splice(playerNamesArray.indexOf(player), 1);
-
     this.setState({
       playerNamesArray: playerNamesArray
     });
@@ -72,8 +75,8 @@ class HomePage extends Component {
     } = this.state;
 
     return (
-      <section>
-        <h3>How many players are playing in your tournament?</h3>
+      <Fragment>
+      <h3>How many players are playing in your tournament?</h3>
         <form>
           <input
             type="number"
@@ -85,7 +88,7 @@ class HomePage extends Component {
             onClick={e => this.numberOfPlayersSubmit(e)}
             type="submit"
             value="Create Your Tournament!"
-            disabled={numberOfPlayersValid ? "true" : null}
+            disabled={numberOfPlayersValid ? "disabled" : null}
             className="btn-success btn submit-button"
           />
         </form>
@@ -104,13 +107,13 @@ class HomePage extends Component {
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
                 value="+"
-                disabled={playerNames === "" ? "true" : null}
+                disabled={playerNames === "" ? "disabled" : null}
                 className="btn-success btn submit-button"
               />
             </Fragment>
           ) : null}
         </div>
-        {playerNamesArray.length >= 1 ? (
+        {playerNamesArray.length > 0 ? (
           <Fragment>
             <PlayersList
               playerNames={playerNamesArray}
@@ -121,7 +124,7 @@ class HomePage extends Component {
             ) : null}
           </Fragment>
         ) : null}
-      </section>
+      </Fragment>
     );
   }
 }

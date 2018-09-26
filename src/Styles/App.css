@@ -6317,4 +6317,8 @@ a.text-dark:hover, a.text-dark:focus {
   display: inline-flex;
 }
 
+.match-style {
+  font-size: 2em
+}
+
 

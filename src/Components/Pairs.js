@@ -24,7 +24,7 @@ class Pairs extends Component {
           className={"btn btn-success"}
           buttonText={"Create Fixtures"}
         />
-        <ul className="list-unstyled">
+        <ul className="list-unstyled match-style">
           { this.renderPairs() }
         </ul>
       </Fragment>

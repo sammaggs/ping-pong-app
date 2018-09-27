@@ -29,21 +29,23 @@ class Matches extends Component {
   };
 
   onClickWinnerP1(player1) {
+    let player1String = player1.toString()
     let { winners } = this.state;
       this.setState({
         player1Clicked: !this.state.player1Clicked,
         player2Clicked: this.state.player1Clicked,
-        winners: [...winners, player1]
+        winners: winners.includes(player1String) ? [...winners] : [...winners, player1String]
       })
   }
 
   onClickWinnerP2(player2) {
+    let player2String = player2.toString()
     let { winners } = this.state;
     
     this.setState({
         player2Clicked: !this.state.player2Clicked,
         player1Clicked: this.state.player2Clicked,
-        winners: [...winners, player2],
+        winners: winners.includes(player2String) ? [...winners] : [...winners, player2String]
     })
 };
 

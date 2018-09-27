@@ -1740,6 +1740,7 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5); }
 
 .btn-danger {
+  margin: 0px 10px 0px 10px;
   color: #fff;
   background-color: #E74C3C;
   border-color: #E74C3C; }
@@ -6323,13 +6324,22 @@ a.text-dark:hover, a.text-dark:focus {
 
 .fixture-list {
   width: 10em;
-  margin-top: 10px 0px 10px 0px
+  margin-top: 10px 0px 10px 0px;
 }
 
 .fixture {
   border: 1px solid white;
   list-style: none;
-  font-size: 1.25em
+  font-size: 1.25em;
+  border-radius: 10px;
+}
+
+.fixture-div {
+  margin-top: 40px
+}
+
+.h5-styling {
+  margin-top: 15px
 }
 
 

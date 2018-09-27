@@ -10,16 +10,14 @@ const PlayerList = ({ onClickDelete, playerNames } ) => {
           <div>
             <ul className="list-unstyled">
               {playerNames.map((player, i) => (
-                <Fragment>
-                  <div className="playerNameDiv">
-                  <li index={i} key={i}>{player}</li>
+                  <div key={i} className="playerNameDiv">
+                  <li>{player}</li>
                   <Button
                     onClick={onClickDelete}
-                    className={"btn-warning btn"}
-                    buttonText={"Delete"}
+                    className={"btn-danger btn"}
+                    buttonText={"x"}
                   />
                   </div>
-                </Fragment>
               ))}
             </ul>
           </div>

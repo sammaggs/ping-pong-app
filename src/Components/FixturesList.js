@@ -22,15 +22,14 @@ class FixturesList extends Component {
         pairs : pairs
     })
   }
-
-
+  
   render() {
     const { pairs }  = this.state;
     const { numberOfPlayers } = this.props;
 
     return (
       <Fragment>
-          <h1>Fixtures</h1>
+          <h3>Fixtures</h3>
         <Matches numberOfPlayers={numberOfPlayers} onClick={this.onClickMakeFixtures} pairs={pairs} />
       </Fragment>
     );

@@ -46,7 +46,6 @@ class HomePage extends Component {
       playerNamesArray: [...playerNamesArray, playerNames],
       playerNames: ""
     });
-    console.log(this.state.playerNamesArray)
   }
 
   onClickRemovePlayer(player) {
@@ -92,7 +91,7 @@ class HomePage extends Component {
             className="btn-success btn submit-button"
           />
         </form>
-        <h4>Players: {numberOfPlayers}</h4>
+        <h5 className="h5-styling">Players required: 4, 8 or 16</h5>
         <div>{numberOfPlayersValid ? null : <h1>{error}</h1>}</div>
         <div>
           {numberOfPlayersValid ? (
@@ -115,14 +114,16 @@ class HomePage extends Component {
         </div>
         {playerNamesArray.length > 0 ? (
           <Fragment>
+            <div>
             <PlayersList
               playerNames={playerNamesArray}
               onClickDelete={this.onClickRemovePlayer}
             />
+            </div>
+          </Fragment>
+        ) : null}
         {playerNamesArray.length >= numberOfPlayers ? (
           <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNamesArray} />
-            ) : null}
-          </Fragment>
         ) : null}
       </Fragment>
     );

@@ -89,10 +89,7 @@ class Matches extends Component {
             )
           })
         }
-      {roundFinished ? <Rounds 
-                          onClickPlayer1={() => this.onClickWinnerP1()} 
-                          onClickPlayer1={() => this.onClickWinnerP1()}
-                          players={winners}/> 
+      {roundFinished ? <Rounds players={winners}/> 
                       : null}
       </Fragment>
     );

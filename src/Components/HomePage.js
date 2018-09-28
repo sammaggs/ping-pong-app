@@ -6,8 +6,8 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPlayers: 4,
-      playerNames: ["Sam", "Ricky", "Dan", "Tim"],
+      numberOfPlayers: 8,
+      playerNames: ["Sam", "Ricky", "Dan", "Tim", "Ian", "Dave", "Paul", "Jordan"],
       playerName: "",
       numberOfPlayersValid: false,
       error: ""

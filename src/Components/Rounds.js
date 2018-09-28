@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from "react";
+import Button from "./Button";
 
 class Rounds extends Component {
   constructor(props) {
@@ -6,75 +7,83 @@ class Rounds extends Component {
     this.state = {
       winners: [],
       roundFinished: false,
+      matches: []
     };
+    this.onClickWinnerP1 = this.onClickWinnerP1.bind(this);
+    this.onClickWinnerP2 = this.onClickWinnerP2.bind(this);
+    this.onClickMakeFixtures = this.onClickMakeFixtures.bind(this);
   }
 
   onClickWinnerP1(player1) {
-    console.log(player1)
-    // const { winners } = this.state;
-    // const { players } = this.props;
-    // let player1String = players.player.toString();
-    // const isWinner = winners.find(o => o.player === player1String);
-    //   this.setState(prevState => ({
-    //     winners: isWinner == null ? [...prevState.winners, {player : player1String, winner : true}] : [...prevState.winners],
-    //     roundFinished: winners.length >= players.length - 1 ? true : false
-    //   }))      
-      // let player1Styling = isWinner === null ? "" : winnerStyling;
-  };
+    const { winners, matches } = this.state;
+    const isWinner = winners.find(o => o.player === player1.player);
+    this.setState(prevState => ({
+      winners:
+        isWinner == null
+          ? [...prevState.winners, { player: player1.player, winner: true }]
+          : [...prevState.winners],
+      roundFinished: winners.length >= matches.length - 1 ? true : false
+    }));
+  }
 
   onClickWinnerP2(player2) {
-    console.log(player2)
-    // const { winners } = this.state;
-    // const { pairs } = this.props;
-    // let player2String = player2.toString();
-    // const isWinner = winners.find(o => o.player === player2String);
-    // this.setState(prevState => ({
-    //     winners: isWinner == null ? [...prevState.winners, {player : player2String, winner:true}] :
-    //     [...prevState.winners],
-    //     roundFinished: winners.length >= pairs.length - 1 ? true : false
-    // }))
-    // let player2Styling = isWinner === null ? "" : winnerStyling;
-};
+    const { winners, matches } = this.state;
+    const isWinner = winners.find(o => o.player === player2.player);
+    this.setState(prevState => ({
+      winners:
+        isWinner == null
+          ? [...prevState.winners, { player: player2.player, winner: true }]
+          : [...prevState.winners],
+      roundFinished: winners.length >= matches.length - 1 ? true : false
+    }));
+  }
 
-  render() {
-
-    const shuffledWinners = [...this.props.players];
+  onClickMakeFixtures() {
+    const { players } = this.props;
+    const shuffledWinners = [...players];
     shuffledWinners.sort(() => 0.5 - Math.random());
-    const winnersMatchs = [];
+    const matches = [];
     while (shuffledWinners.length >= 2) {
       const pair = [shuffledWinners.pop(), shuffledWinners.pop()];
-      winnersMatchs.push(pair);
+      matches.push(pair);
     }
-    console.log(winnersMatchs)
+    this.setState({
+      matches: matches
+    });
+  }
 
+  render() {
+    const { matches } = this.state;
     return (
       <Fragment>
-      <h1>Round 2</h1>
-      {winnersMatchs.map((match, i) => {
-        let player1 = [...match];
-        let player2 = player1.splice(0, Math.ceil(player1.length / 2));
-        return (
-          <div key={i} className="fixture-div">
-            <ul className="list-unstyled fixture-list">
-              <li
-                // style={player1Styling}
-                onClick={() => this.onClickWinnerP1(player1)}
-                className="hvr-grow fixture">
-                {match[0].player}
-              </li>
-              <span>vs</span>
-              <li
-                // style={player2Styling}
-                onClick={() => this.onClickWinnerP2(player2)}
-                className="hvr-grow fixture">
-              {match[1].player}
-            </li>
-          </ul>
-        </div>
-        )
-      })
-    }
-    </Fragment>
+        <Button
+          className={"btn btn-success"}
+          buttonText={"Create second round!"}
+          onClick={this.onClickMakeFixtures}
+        />
+        <h1>Round 2</h1>
+        {matches.length > 0
+          ? matches.map((match, i) => {
+              let player1 = match[0];
+              let player2 = match[1];
+              return (
+                <div key={i} className="fixture-div">
+                  <ul className="list-unstyled fixture-list">
+                    <li onClick={() => this.onClickWinnerP1(player1)}
+                        className="hvr-grow fixture">
+                        {match[0].player}
+                    </li>
+                    <span>vs</span>
+                    <li onClick={() => this.onClickWinnerP2(player2)}
+                        className="hvr-grow fixture">
+                      {match[1].player}
+                    </li>
+                  </ul>
+                </div>
+              );
+            })
+          : null}
+      </Fragment>
     );
   }
 }

@@ -8,7 +8,7 @@ class FixturesList extends Component {
       pairs: []
     };
     this.onClickMakeFixtures = this.onClickMakeFixtures.bind(this);
-  }
+  };
 
   onClickMakeFixtures() {
     const shuffledPlayers = [...this.props.playerNames];
@@ -21,10 +21,8 @@ class FixturesList extends Component {
     this.setState({
         pairs : pairs
     })
-  }
+  };
 
-  
-  
   render() {
     const { pairs }  = this.state;
     const { numberOfPlayers } = this.props;

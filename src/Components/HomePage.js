@@ -106,7 +106,7 @@ class HomePage extends Component {
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
                 value="+"
-                disabled={playerNames === "" ? "disabled" : null}
+                disabled={playerNames.length >= numberOfPlayers ? "disabled" : null}
                 className="btn-success btn submit-button"
               />
             </Fragment>

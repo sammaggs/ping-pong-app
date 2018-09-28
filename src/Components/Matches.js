@@ -1,9 +1,9 @@
 import React, { Fragment, Component } from "react";
 import Button from "./Button";
-// import TwoRounds from "./TwoRounds";
+import Rounds from "./Rounds";
 
-const playerStylingTrue = {
-  backgroundColor: "#26C281"
+const winnerStyling = {
+  backgroundColor: "green"
 };
 
 class Matches extends Component {
@@ -11,10 +11,9 @@ class Matches extends Component {
     super(props);
     this.state = {
       numOfRounds: "",
-      player1Clicked: false,
-      player2Clicked: false,
-      winners: []
-    }
+      winners: [],
+      roundFinished: false,
+      }
     this.onClickWinnerP1 = this.onClickWinnerP1.bind(this);
     this.onClickWinnerP2 = this.onClickWinnerP2.bind(this);
     this.numberOfRounds = this.numberOfRounds.bind(this);
@@ -30,29 +29,34 @@ class Matches extends Component {
     )
   };
 
-
   onClickWinnerP1(player1) {
+    const { winners } = this.state;
+    const { pairs } = this.props;
     let player1String = player1.toString();
+    const isWinner = winners.find(o => o.player === player1String);
       this.setState(prevState => ({
-        player1Clicked: !this.state.player1Clicked,
-        player2Clicked: this.state.player1Clicked,
-        winners: [...prevState.winners, {player : player1String, winner : true}]
-      }))
+        winners: isWinner == null ? [...prevState.winners, {player : player1String, winner : true}] : [...prevState.winners],
+        roundFinished: winners.length >= pairs.length - 1 ? true : false
+      }))      
+      // let player1Styling = isWinner === null ? "" : winnerStyling;
   };
 
   onClickWinnerP2(player2) {
+    const { winners } = this.state;
+    const { pairs } = this.props;
     let player2String = player2.toString();
+    const isWinner = winners.find(o => o.player === player2String);
     this.setState(prevState => ({
-        player2Clicked: !this.state.player2Clicked,
-        player1Clicked: this.state.player2Clicked,
-        winners: [...prevState.winners, {player : player2String, winner:true}]
+        winners: isWinner == null ? [...prevState.winners, {player : player2String, winner:true}] :
+        [...prevState.winners],
+        roundFinished: winners.length >= pairs.length - 1 ? true : false
     }))
-
+    // let player2Styling = isWinner === null ? "" : winnerStyling;
 };
 
   render() {
     const { pairs } = this.props;
-    const { winners } = this.state;
+    const { winners, roundFinished } = this.state;
     return (
       <Fragment>
         <Button
@@ -68,24 +72,28 @@ class Matches extends Component {
               <div key={i} className="fixture-div">
                 <ul className="list-unstyled fixture-list">
                   <li
-                    style={ this.state.winners.includes(player1) ? playerStylingTrue : null}
+                    // style={player1Styling}
                     onClick={() => this.onClickWinnerP1(player1)}
                     className="hvr-grow fixture">
                     {player1}
                   </li>
                   <span>vs</span>
                   <li
-                    style={this.state.winners.includes(player2) ? playerStylingTrue : null}
+                    // style={player2Styling}
                     onClick={() => this.onClickWinnerP2(player2)}
                     className="hvr-grow fixture">
                   {player2}
                 </li>
               </ul>
             </div>
-          )
-        })
+            )
+          })
         }
-        {/* <TwoRounds pairs={pairs}/> */}
+      {roundFinished ? <Rounds 
+                          onClickPlayer1={() => this.onClickWinnerP1()} 
+                          onClickPlayer1={() => this.onClickWinnerP1()}
+                          winners={winners}/> 
+                      : null}
       </Fragment>
     );
   }

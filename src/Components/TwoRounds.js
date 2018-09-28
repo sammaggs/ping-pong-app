@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, {Component } from "react";
 
 class TwoRounds extends Component {
   constructor(props) {

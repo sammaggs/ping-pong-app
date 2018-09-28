@@ -6,7 +6,7 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPlayers: 0,
+      numberOfPlayers: 4,
       playerNames: [],
       playerName: "",
       numberOfPlayersValid: false,
@@ -27,11 +27,11 @@ class HomePage extends Component {
       this.setState({
         error: error
       })
-    } else if (numberOfPlayers % 4 !== 0 || numberOfPlayers > 16) {
-        error = "You need to have 4, 8 or 16 Players!";
-        this.setState({
-          error: error
-        })
+    // } else if (numberOfPlayers % 4 !== 0 || numberOfPlayers > 16) {
+    //     error = "You need to have 4, 8 or 16 Players!";
+    //     this.setState({
+    //       error: error
+    //     })
     } else {
       this.setState({
         numberOfPlayersValid: true
@@ -122,7 +122,7 @@ class HomePage extends Component {
             </div>
           </Fragment>
         ) : null}
-        {playerNames.length >= numberOfPlayers ? (
+        {playerNames.length !==0 && playerNames.length >= numberOfPlayers ? (
           <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNames} />
         ) : null}
       </Fragment>

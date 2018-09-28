@@ -7,7 +7,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       numberOfPlayers: 4,
-      playerNames: [],
+      playerNames: ["Sam", "Ricky", "Dan", "Tim"],
       playerName: "",
       numberOfPlayersValid: false,
       error: ""

@@ -2,14 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import '../Styles/App.css';
 import '../Styles/Hover.css';
+import pingPongIcon from '../images/table-tennis.png';
 
 const Header = () => {
     return (
         <header>
             <div>
-                <Link to="/">
-                <h1>Everyone  <span aria-label="Heart" role="img">❤️'s Ping Pong</span></h1>
-                </Link>
+                <img className="header-icon hvr-bob"src={pingPongIcon} />
             </div>
         </header>
     )

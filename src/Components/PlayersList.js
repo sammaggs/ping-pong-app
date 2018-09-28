@@ -6,14 +6,14 @@ const PlayerList = ({ onClickDelete, playerNames } ) => {
     return (
       <Fragment>
         <section>
-          <h3>Player Names</h3>
+          <h3>Players:</h3>
           <div>
             <ul className="list-unstyled">
               {playerNames.map((player, i) => (
                   <div key={i} className="playerNameDiv">
                   <li>{player}</li>
                   <Button
-                    onClick={onClickDelete}
+                    onClick={() => onClickDelete(i)}
                     className={"btn-danger btn"}
                     buttonText={"x"}
                   />

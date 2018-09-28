@@ -34,18 +34,17 @@ class Matches extends Component {
       this.setState({
         player1Clicked: !this.state.player1Clicked,
         player2Clicked: this.state.player1Clicked,
-        winners: winners.includes(player1String) ? [...winners] : [...winners, player1String]
+        winners: winners.includes(player1String) || this.state.player1Clicked ? [...winners] : [...winners, player1String]
       })
-  }
+  };
 
   onClickWinnerP2(player2) {
     let player2String = player2.toString()
     let { winners } = this.state;
-    
     this.setState({
         player2Clicked: !this.state.player2Clicked,
         player1Clicked: this.state.player2Clicked,
-        winners: winners.includes(player2String) ? [...winners] : [...winners, player2String]
+        winners: winners.includes(player2String) || this.state.player2Clicked ? [...winners] : [...winners, player2String]
     })
 };
 
@@ -70,23 +69,21 @@ class Matches extends Component {
                     onClick={() => this.onClickWinnerP1(player1)}
                     className="hvr-grow fixture">
                     {player1}
-                    {console.log(player1)}
                   </li>
                   <span>vs</span>
                   <li
                     style={this.state.player2Clicked ? playerStylingTrue : null}
                     onClick={() => this.onClickWinnerP2(player2)}
                     className="hvr-grow fixture">
-                    {player2}
-                  </li>
-                </ul>
-            </div> 
+                  {player2}
+                </li>
+              </ul>
+            </div>
           )
         })
-      }
-      {/* <TwoRounds pairs={pairs}/> */}
+        }
+        {/* <TwoRounds pairs={pairs}/> */}
       </Fragment>
-      
     );
   }
 }

@@ -7,8 +7,8 @@ class HomePage extends Component {
     super(props);
     this.state = {
       numberOfPlayers: 0,
-      playerNamesArray: [],
-      playerNames: "",
+      playerNames: [],
+      playerName: "",
       numberOfPlayersValid: false,
       error: ""
     };
@@ -41,18 +41,18 @@ class HomePage extends Component {
 
   playerNamesSubmit(e) {
     e.preventDefault();
-    let { playerNames, playerNamesArray } = this.state;
+    let { playerName, playerNames } = this.state;
     this.setState({
-      playerNamesArray: [...playerNamesArray, playerNames],
-      playerNames: ""
+      playerNames: [...playerNames, playerName],
+      playerName: ""
     });
   }
 
-  onClickRemovePlayer(player) {
-    const playerNamesArray = [...this.state.playerNamesArray];
-    playerNamesArray.splice(playerNamesArray.indexOf(player), 1);
+  onClickRemovePlayer(i) {
+    const playerNames = [...this.state.playerNames];
+    playerNames.splice(i, 1);
     this.setState({
-      playerNamesArray: playerNamesArray
+      playerNames: playerNames
     });
   }
 
@@ -61,15 +61,15 @@ class HomePage extends Component {
   }
 
   handleChangeNames(e) {
-    this.setState({ playerNames: e.target.value });
+    this.setState({ playerName: e.target.value });
   }
 
   render() {
     const {
-      playerNames,
+      playerName,
       numberOfPlayersValid,
       error,
-      playerNamesArray,
+      playerNames,
       numberOfPlayers
     } = this.state;
 
@@ -99,7 +99,7 @@ class HomePage extends Component {
               <input
                 type="text"
                 onChange={e => this.handleChangeNames(e)}
-                value={playerNames}
+                value={playerName}
                 placeholder='Enter name here....'
               />
               <input
@@ -112,18 +112,18 @@ class HomePage extends Component {
             </Fragment>
           ) : null}
         </div>
-        {playerNamesArray.length > 0 ? (
+        {playerNames.length > 0 ? (
           <Fragment>
             <div>
             <PlayersList
-              playerNames={playerNamesArray}
+              playerNames={playerNames}
               onClickDelete={this.onClickRemovePlayer}
             />
             </div>
           </Fragment>
         ) : null}
-        {playerNamesArray.length >= numberOfPlayers ? (
-          <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNamesArray} />
+        {playerNames.length >= numberOfPlayers ? (
+          <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNames} />
         ) : null}
       </Fragment>
     );

@@ -19,8 +19,9 @@ The app should now start up in your browser :)
 ## Built With
 
 * [React.js](https://facebook.github.io/react/) - Framework
-* [Redux](http://redux.js.org/) - State Management
+* [CSS / Bootstrap](https://github.com/twbs/bootstrap) - Framework
 
 ## Author
 
 * **Sam Maggs** - *Twitter* - [Sam Maggs](https://twitter.com/scmaggs)
+                - *LinkedIn* - [Sam Maggs](https://www.linkedin.com/in/sam-maggs-b0443a170/) - 

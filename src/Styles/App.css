@@ -6325,8 +6325,9 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .fixture-list {
-  width: 10em;
   margin-top: 10px 0px 10px 0px;
+  display: inline-block;
+  width: 20em;
 }
 
 .fixture {
@@ -6339,7 +6340,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .fixture-div {
-  margin-top: 40px
+  margin-top: 40px,
 }
 
 .h5-styling {
@@ -6360,8 +6361,5 @@ a.text-dark:hover, a.text-dark:focus {
 .li-disabled {
   pointer-events:none;
   opacity:0.6;
-}
-
-.loser-styling {
-  background-color: rgba(201, 29, 29, 0.68)
+  background-color: rgba(63, 63, 63, 0.68);
 }

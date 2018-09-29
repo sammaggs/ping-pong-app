@@ -3,7 +3,7 @@ import Button from "./Button";
 import Rounds from "./Rounds";
 
 const winnerStyling = {
-  backgroundColor: "green"
+  backgroundColor: "rgb(191,155,48)"
 };
 
 class Matches extends Component {
@@ -12,7 +12,8 @@ class Matches extends Component {
     this.state = {
       numOfRounds: "",
       winners: [],
-      roundFinished: false
+      roundFinished: false,
+      roundNumber: 1,
     };
     this.onClickWinnerP1 = this.onClickWinnerP1.bind(this);
     this.onClickWinnerP2 = this.onClickWinnerP2.bind(this);
@@ -39,8 +40,8 @@ class Matches extends Component {
       winners:
         isWinner == null
           ? [...prevState.winners, { player: player1String, winner: true }] // if player in state, dont add again.
-          : [...prevState.winners], 
-      roundFinished: winners.length >= pairs.length - 1 ? true : false // if there are as many winners as pairs,
+          : [...prevState.winners], //  ^^^ adds object to state containing winners name and winner:true
+      roundFinished: winners.length >= pairs.length - 1 ? true : false, // if there are as many winners as pairs,
       // game must be finished. If so set state.roundFinished to true.
     }));
   }
@@ -55,13 +56,13 @@ class Matches extends Component {
         isWinner == null
           ? [...prevState.winners, { player: player2String, winner: true }]
           : [...prevState.winners],
-      roundFinished: winners.length >= pairs.length - 1 ? true : false
+      roundFinished: winners.length >= pairs.length - 1 ? true : false,
     }));
   }
 
   render() {
     const { pairs } = this.props;
-    const { winners, roundFinished } = this.state;
+    const { winners, roundFinished, roundNumber } = this.state;
     
     return (
       <Fragment>
@@ -72,6 +73,7 @@ class Matches extends Component {
         />
         {this.numberOfRounds()} 
         {/*  ^^^ call function to display how many rounds to expect to user  */}
+        <h1>Round 1</h1>
         {pairs.map((pair, i) => { // map over pairs and split in 2, to create player1 & player2. 
           let player1 = [...pair];
           let player2 = player1.splice(0, Math.ceil(player1.length / 2));
@@ -84,23 +86,21 @@ class Matches extends Component {
                 <li
                   style={isWinner1 == null ? null : winnerStyling} // is winner? set winner styling / null
                   onClick={() => this.onClickWinnerP1(player1)} // sending player1 into clickhandler above
-                  className={isWinner2 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"} 
-                >
+                  className={isWinner2 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"}>
                   {player1}
                 </li>
                 <span>vs</span>
                 <li
                   style={isWinner2 == null ? null : winnerStyling} // is winner? set winner styling / null
                   onClick={() => this.onClickWinnerP2(player2)} // sending player1 into clickhandler above
-                  className={isWinner1 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"} 
-                >
+                  className={isWinner1 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"}>
                   {player2}
                 </li>
               </ul>
             </div>
           );
         })}
-        {roundFinished ? <Rounds players={winners} /> : null} 
+        {roundFinished ? <Rounds roundNumber={roundNumber + 1} players={winners} /> : null} 
         {/* only display next round once this round is finished */}
       </Fragment>
     );

@@ -6,11 +6,13 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPlayers: 8,
-      playerNames: ["Sam", "Ricky", "Dan", "Tim", "Ian", "Dave", "Paul", "Jordan"], // dummy data for testing.
+      numberOfPlayers: 16,
+      playerNames: ["Sam", "Ricky", "Dan", "Aden", "Jen", "Declan", "Andy", "Jordan", "Chris", "Sarah", "Sally", "Dave", "Ian", "Paul", "Jane", "Mo"],
+      // dummy data for testing.
       playerName: "",
       numberOfPlayersValid: false,
-      error: ""
+      error: "",
+      duplicateName: false
     };
     this.handleChangePlayers = this.handleChangePlayers.bind(this);
     this.numberOfPlayersSubmit = this.numberOfPlayersSubmit.bind(this);
@@ -42,9 +44,13 @@ class HomePage extends Component {
   playerNamesSubmit(e) {
     e.preventDefault();
     let { playerName, playerNames } = this.state;
+    let duplicatePlayers = playerNames.includes(playerName);
+    let error = duplicatePlayers ? "You already have a player with that name, please include your surname" : null;
     this.setState({
-      playerNames: [...playerNames, playerName],
-      playerName: ""
+      playerNames: duplicatePlayers ? [...playerNames] : [...playerNames, playerName],
+      playerName: "",
+      error: error,
+      duplicateName: duplicatePlayers ? true : false
     });
   }
 
@@ -70,18 +76,21 @@ class HomePage extends Component {
       numberOfPlayersValid,
       error,
       playerNames,
-      numberOfPlayers
+      numberOfPlayers,
+      duplicateName
     } = this.state;
 
     return (
       <Fragment>
-      <h3>How many players are playing in your tournament?</h3>
+      <h3>Welcome to the only Ping Pong TrnmntGnrtr you will ever need!</h3>
+      <h5>How many players are playing in your tournament?</h5>
         <form>
           <input
             type="number"
             pattern="[0-9]*"
             onChange={e => this.handleChangePlayers(e)}
             placeholder='0'
+            value={numberOfPlayers}
           />
           <input
             onClick={e => this.numberOfPlayersSubmit(e)}
@@ -93,9 +102,9 @@ class HomePage extends Component {
           />
         </form>
         <h5 className="h5-styling">Players required: 4, 8 or 16</h5>
-        <div>{numberOfPlayersValid ? null : <h1>{error}</h1>}</div>
+        {/* <div>{numberOfPlayersValid ? null : <h5 className="h5-styling">To start, please click to</h5>}</div> */}
         <div>
-          {numberOfPlayersValid ? (
+          {numberOfPlayersValid || playerNames.length < numberOfPlayers ?  (
             <Fragment>
               <input
                 type="text"
@@ -111,6 +120,7 @@ class HomePage extends Component {
                 // disables submit button once there are enough player names. 
                 className="btn-success btn submit-button"
               />
+              <h6 className="h5-styling" >{error}</h6>
             </Fragment>
           ) : null}
         </div>
@@ -134,3 +144,5 @@ class HomePage extends Component {
 }
 
 export default HomePage;
+
+// ["Sam", "Ricky", "Dan", "Aden", "Jen", "Declan", "Andy", "Jordan", "Sam", "Ricky", "Dan", "Aden", "Jen", "Declan", "Andy", "Jordan"]

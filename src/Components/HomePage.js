@@ -6,9 +6,8 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPlayers: 16,
-      playerNames: ["Sam", "Ricky", "Dan", "Aden", "Jen", "Declan", "Andy", "Jordan", "Chris", "Sarah", "Sally", "Dave", "Ian", "Paul", "Jane", "Mo"],
-      // dummy data for testing.
+      numberOfPlayers: 4, // dummy number for testing
+      playerNames: ["Sam", "Ricky", "Dan", "Aden"], // dummy data for testing.
       playerName: "",
       numberOfPlayersValid: false,
       error: "",
@@ -41,13 +40,13 @@ class HomePage extends Component {
     }
   }
 
-  playerNamesSubmit(e) {
+  playerNamesSubmit(e) { // validates players names, does not allow duplicates or an empty value. 
     e.preventDefault();
     let { playerName, playerNames } = this.state;
     let duplicatePlayers = playerNames.includes(playerName);
     let error = duplicatePlayers ? "You already have a player with that name, please include your surname" : null;
     this.setState({
-      playerNames: duplicatePlayers ? [...playerNames] : [...playerNames, playerName],
+      playerNames: duplicatePlayers || playerName == "" ? [...playerNames] : [...playerNames, playerName],
       playerName: "",
       error: error,
       duplicateName: duplicatePlayers ? true : false
@@ -145,4 +144,4 @@ class HomePage extends Component {
 
 export default HomePage;
 
-// ["Sam", "Ricky", "Dan", "Aden", "Jen", "Declan", "Andy", "Jordan", "Sam", "Ricky", "Dan", "Aden", "Jen", "Declan", "Andy", "Jordan"]
+// "Jen", "Declan", "Andy", "Jordan", "Chris", "Sarah", "Sally", "Dave", "Ian", "Paul", "Jane", "Mo"],

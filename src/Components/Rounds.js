@@ -66,7 +66,7 @@ class Rounds extends Component {
 
     return (
       <Fragment>
-        {matches.length === 1 ? <h1>Final Round</h1> : <h1>Round { roundNumber } </h1>}
+        {matches.length == 1 ? <h1>Final Round</h1> : <h1>Round { roundNumber } </h1>}
         {matches.length > 0
           ? matches.map((match, i) => {
               let player1 = match[0];
@@ -94,7 +94,7 @@ class Rounds extends Component {
               );
             })
           : null}
-      {roundFinished ? <Rounds roundNumber={roundNumber + 1} players={winners} /> : null} 
+      {roundFinished && matches.length > 1 ? <Rounds roundNumber={roundNumber + 1} players={winners} /> : null} 
       </Fragment>
     );
   }

@@ -24,4 +24,4 @@ The app should now start up in your browser :)
 ## Author
 
 * **Sam Maggs** - *Twitter* - [Sam Maggs](https://twitter.com/scmaggs)
-                - *LinkedIn* - [Sam Maggs](https://www.linkedin.com/in/sam-maggs-b0443a170/) - 
+                - *LinkedIn* - [Sam Maggs](https://www.linkedin.com/in/sam-maggs-b0443a170/)

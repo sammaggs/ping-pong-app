@@ -10,10 +10,11 @@ const PlayerList = ({ onClickDelete, playerNames } ) => {
           <div>
             <ul className="list-unstyled">
               {playerNames.map((player, i) => (
+                // mapping over player names to create a seperate list item for each one. 
                   <div key={i} className="playerNameDiv">
                   <li>{player}</li>
                   <Button
-                    onClick={() => onClickDelete(i)}
+                    onClick={() => onClickDelete(i)} // onclick that has been accepted as prop from HomPage with player index. 
                     className={"btn-danger btn"}
                     buttonText={"x"}
                   />

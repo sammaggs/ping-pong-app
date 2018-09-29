@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
-import Button from "./Button";
+// import Button from "./Button";
+// import { onLoadMakeFixtures } from '../Utility/Helper';
 
 class Rounds extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class Rounds extends Component {
     };
     this.onClickWinnerP1 = this.onClickWinnerP1.bind(this);
     this.onClickWinnerP2 = this.onClickWinnerP2.bind(this);
-    this.onClickMakeFixtures = this.onClickMakeFixtures.bind(this);
   }
 
   onClickWinnerP1(player1) {
@@ -38,7 +38,11 @@ class Rounds extends Component {
     }));
   }
 
-  onClickMakeFixtures() {
+  componentDidMount() {
+    this.onLoadMakeFixtures()
+  }
+
+  onLoadMakeFixtures() {
     const { players } = this.props;
     const shuffledWinners = [...players];
     shuffledWinners.sort(() => 0.5 - Math.random());
@@ -56,11 +60,6 @@ class Rounds extends Component {
     const { matches } = this.state;
     return (
       <Fragment>
-        <Button
-          className={"btn btn-success"}
-          buttonText={"Create second round!"}
-          onClick={this.onClickMakeFixtures}
-        />
         <h1>Round 2</h1>
         {matches.length > 0
           ? matches.map((match, i) => {

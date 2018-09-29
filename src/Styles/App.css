@@ -1743,7 +1743,9 @@ fieldset:disabled a.btn {
   margin: 0px 10px 0px 10px;
   color: #fff;
   background-color: #E74C3C;
-  border-color: #E74C3C; }
+  border-color: #E74C3C;
+  border-radius: 40px
+ }
   .btn-danger:hover {
     color: #fff;
     background-color: #e12e1c;
@@ -6355,3 +6357,11 @@ a.text-dark:hover, a.text-dark:focus {
   border-radius: 250px
 }
 
+.li-disabled {
+  pointer-events:none;
+  opacity:0.6;
+}
+
+.loser-styling {
+  background-color: rgba(201, 29, 29, 0.68)
+}

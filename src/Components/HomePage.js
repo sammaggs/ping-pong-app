@@ -7,7 +7,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       numberOfPlayers: 8,
-      playerNames: ["Sam", "Ricky", "Dan", "Tim", "Ian", "Dave", "Paul", "Jordan"],
+      playerNames: ["Sam", "Ricky", "Dan", "Tim", "Ian", "Dave", "Paul", "Jordan"], // dummy data for testing.
       playerName: "",
       numberOfPlayersValid: false,
       error: ""
@@ -19,7 +19,7 @@ class HomePage extends Component {
     this.onClickRemovePlayer = this.onClickRemovePlayer.bind(this);
   }
 
-  numberOfPlayersSubmit(e) {
+  numberOfPlayersSubmit(e) { // function to validate if number of players is valid.
     e.preventDefault();
     let { numberOfPlayers, error } = this.state;
     if (numberOfPlayers == 0) {
@@ -48,7 +48,7 @@ class HomePage extends Component {
     });
   }
 
-  onClickRemovePlayer(i) {
+  onClickRemovePlayer(i) { // taking in index of player and removing it from the playerList. 
     const playerNames = [...this.state.playerNames];
     playerNames.splice(i, 1);
     this.setState({
@@ -56,11 +56,11 @@ class HomePage extends Component {
     });
   }
 
-  handleChangePlayers(e) {
+  handleChangePlayers(e) { // user inputs for the number of players.
     this.setState({ numberOfPlayers: e.target.value });
   }
 
-  handleChangeNames(e) {
+  handleChangeNames(e) { // user inputs for the players names.
     this.setState({ playerName: e.target.value });
   }
 
@@ -88,6 +88,7 @@ class HomePage extends Component {
             type="submit"
             value="Create Your Tournament!"
             disabled={numberOfPlayersValid ? "disabled" : null}
+            // disabled submit button when the number of players is correct.
             className="btn-success btn submit-button"
           />
         </form>
@@ -106,13 +107,14 @@ class HomePage extends Component {
                 onClick={e => this.playerNamesSubmit(e)}
                 type="submit"
                 value="+"
-                disabled={playerNames.length >= numberOfPlayers ? "disabled" : null}
+                disabled={playerNames.length >= numberOfPlayers ? "disabled" : null} 
+                // disables submit button once there are enough player names. 
                 className="btn-success btn submit-button"
               />
             </Fragment>
           ) : null}
         </div>
-        {playerNames.length > 0 ? (
+        {playerNames.length > 0 ? ( // will only display playerList if there are playernames in the state. 
           <Fragment>
             <div>
             <PlayersList
@@ -122,7 +124,8 @@ class HomePage extends Component {
             </div>
           </Fragment>
         ) : null}
-        {playerNames.length !==0 && playerNames.length >= numberOfPlayers ? (
+        {playerNames.length !== 0 && playerNames.length >= numberOfPlayers ? ( 
+          // will only display the fixtures list if there are as many players names as the number user entered.
           <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNames} />
         ) : null}
       </Fragment>

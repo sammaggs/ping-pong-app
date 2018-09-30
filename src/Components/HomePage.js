@@ -6,8 +6,11 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPlayers: 8, // dummy number for testing
-      playerNames: ["Sam", "Ricky", "Dan", "Aden", "Ian", "Paul", "Jane", "Mo"], // dummy data for testing.
+      numberOfPlayers: 0,
+      playerNames: [],
+      // ["Jen", "Declan", "Andy", "Jordan", "Chris", "Sarah", "Sally", "Dave", "Ian", "Paul", "Jane", "Mo"],
+       // ^^ dummy data for testing. Add to playerNames array to auto populate player for speedy testing.
+       // Remember to update the number of players to either 4, 8 or 16. Depending on how many players you add.
       playerName: "",
       numberOfPlayersValid: false,
       error: "",
@@ -28,14 +31,14 @@ class HomePage extends Component {
       this.setState({
         error: error
       })
-    // } else if (numberOfPlayers % 4 !== 0 || numberOfPlayers > 16) {
-    //     error = "You need to have 4, 8 or 16 Players!";
-    //     this.setState({
-    //       error: error
-    //     })
+    } else if (numberOfPlayers % 4 !== 0 || numberOfPlayers > 16) {
+        error = "You need to have 4, 8 or 16 Players!";
+        this.setState({
+          error: error
+        })
     } else {
       this.setState({
-        numberOfPlayersValid: true
+        numberOfPlayersValid: true,
       });
     }
   }
@@ -61,35 +64,45 @@ class HomePage extends Component {
     });
   }
 
-  handleChangePlayers(e) { // user inputs for the number of players.
-    this.setState({ numberOfPlayers: e.target.value });
+  handleChangePlayers(e) {
+    let numberOfPlayers = e.target.value; // user inputs for the number of players.
+    this.setState({ 
+      numberOfPlayers: numberOfPlayers 
+    });
   }
 
   handleChangeNames(e) { // user inputs for the players names.
-    this.setState({ playerName: e.target.value });
+    let playerNames = e.target.value;
+    this.setState({ 
+      playerName: playerNames
+    });
   }
 
   render() {
     const {
       playerName,
       numberOfPlayersValid,
-      error,
       playerNames,
       numberOfPlayers,
-      duplicateName
     } = this.state;
 
     return (
       <Fragment>
-      <h3>Welcome to the only Ping Pong TrnmntGnrtr you will ever need!</h3>
-      <h5>How many players are playing in your tournament?</h5>
+      <div className="animated fadeInLeftBig">
+        <h3>Welcome to the only Ping Pong TrnmntGnrtr you will ever need!</h3>
+        {playerNames.length > 0 ? null : <h5>How many players are playing in your tournament?</h5>}
+        {playerNames.length > 0 ? null :
+        <Fragment>
         <form>
           <input
             type="number"
             pattern="[0-9]*"
             onChange={e => this.handleChangePlayers(e)}
-            placeholder='0'
-            value={numberOfPlayers}
+            placeholder="0"
+            disabled={numberOfPlayersValid ? "disabled" : null}
+            min="0"
+            max="16"
+            // value={numberOfPlayers}
           />
           <input
             onClick={e => this.numberOfPlayersSubmit(e)}
@@ -101,9 +114,10 @@ class HomePage extends Component {
           />
         </form>
         <h5 className="h5-styling">Players required: 4, 8 or 16</h5>
-        {/* <div>{numberOfPlayersValid ? null : <h5 className="h5-styling">To start, please click to</h5>}</div> */}
+        </Fragment>
+        }
         <div>
-          {numberOfPlayersValid || playerNames.length < numberOfPlayers ?  (
+          {numberOfPlayersValid && playerNames.length < numberOfPlayers ?  ( // only render if meets conditions
             <Fragment>
               <input
                 type="text"
@@ -119,7 +133,6 @@ class HomePage extends Component {
                 // disables submit button once there are enough player names. 
                 className="btn-success btn submit-button"
               />
-              <h6 className="h5-styling" >{error}</h6>
             </Fragment>
           ) : null}
         </div>
@@ -137,6 +150,7 @@ class HomePage extends Component {
           // will only display the fixtures list if there are as many players names as the number user entered.
           <FixturesList numberOfPlayers={numberOfPlayers} playerNames={playerNames} />
         ) : null}
+      </div>  
       </Fragment>
     );
   }
@@ -144,4 +158,3 @@ class HomePage extends Component {
 
 export default HomePage;
 
-// "Jen", "Declan", "Andy", "Jordan", "Chris", "Sarah", "Sally", "Dave", "Ian", "Paul", "Jane", "Mo"],

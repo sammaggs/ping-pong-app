@@ -45,7 +45,7 @@ class NextRounds extends Component {
     this.onLoadMakeFixtures()
   }
 
-  onLoadMakeFixtures() {
+  onLoadMakeFixtures() { // takes in players and shuffles, then splits into pairs for the matches. 
     const { players } = this.props;
     const shuffledWinners = [...players];
     shuffledWinners.sort(() => 0.5 - Math.random());
@@ -65,10 +65,12 @@ class NextRounds extends Component {
 
     return (
       <Fragment>
+        <div className="animated zoomIn">
         {matches.length == 1 ? <h1>Final Round</h1> : <h1>Round { roundNumber } </h1>}
-        {winners.length === 1 && matches.length == 1 ? <h2 className="animated bounceIn">🏓   {winners[0].player} Wins the Tourney!   🏓</h2> : null}
+        {winners.length === 1 && matches.length == 1 ? <h2 className="animated pulse infinite">
+        <span aria-labelledby="ping pong emoji" role="img">🏓 </span>  {winners[0].player} Wins the Tourney!   <span aria-labelledby="ping pong emoji" role="img">🏓 </span></h2> : null}
         {matches.length > 0
-          ? matches.map((match, i) => {
+          ? matches.map((match, i) => { 
               let player1 = match[0];
               let player2 = match[1];
               let player1String = match[0].player.toString();
@@ -95,7 +97,9 @@ class NextRounds extends Component {
             })
           : null}
       {roundFinished && matches.length > 1 ? <NextRounds roundNumber={roundNumber + 1} players={winners} /> : null}
-      {matches.length === 0 || roundFinished ? null : <ScoreCounter/>}
+      {matches.length === 0 || roundFinished ? null : <ScoreCounter/>} 
+      {/*  ^^ show score counter each time there is a new round */}
+      </div>
       </Fragment>
     );
   }

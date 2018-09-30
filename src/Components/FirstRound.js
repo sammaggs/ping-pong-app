@@ -26,7 +26,7 @@ class FirstRound extends Component {
     const numOfRounds = Math.ceil(Math.log(numberOfPlayers) / Math.log(2));
     return (
       <h4 className="h5-styling">
-        {numOfRounds} rounds, enjoy!
+        Your tournament will have {numOfRounds} rounds, enjoy!
       </h4>
     );
   }
@@ -71,10 +71,11 @@ class FirstRound extends Component {
           onClick={this.props.onClick}
           className={"btn btn-success"}
           buttonText={"Create Random Matches 🏓"}
+          disabled={pairs.length > 0 ? "disabled" : null} 
         />
-        {this.numberOfRounds()} 
+        {pairs.length > 0 ? null : this.numberOfRounds()}
         {/*  ^^^ call function to display how many rounds to expect to user  */}
-        {pairs.length > 1 ? <h1>Round 1</h1> : null}
+        {pairs.length > 1 ? <h1 className="round-num-styling">Round 1</h1> : null}
         {pairs.map((pair, i) => { // map over pairs and split in 2, to create player1 & player2. 
           let player1 = [...pair];
           let player2 = player1.splice(0, Math.ceil(player1.length / 2));
@@ -82,7 +83,7 @@ class FirstRound extends Component {
           let isWinner2 = winners.find(o => o.player == player2);
 
           return (
-            <div key={i} className="fixture-div">
+            <div key={i} className="fixture-div animated zoomIn">
               <ul className="list-unstyled fixture-list">
                 <li
                   style={isWinner1 == null ? null : winnerStyling} // is winner? set winner styling / null

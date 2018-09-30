@@ -58,10 +58,6 @@ onClickResetScore() { // resets both players scores to 0.
 
   return (
   <Fragment>
-      {/* <header className="page-header">
-          <h4>Keep track of your scores: </h4>
-      </header> */}
-      
       {/* scores */}
       <div>
           <div className="score-counter-players">
@@ -69,16 +65,14 @@ onClickResetScore() { // resets both players scores to 0.
               <h4>{player1}</h4>
           </div>
           <button disabled={disabled} onClick={this.onClickPlayer1Point} className="btn btn-primary">+</button>
-
-
-        <div className="score-counter-players">
+          <div className="score-counter-players">
               {serving ? <h4 className="player-p">Player 2</h4> : <h4 className="player-p">Player 2 <span className="player-serving">Serving</span></h4> }
               <h4>{player2}</h4>
-        </div>
-        <button disabled={disabled} onClick={this.onClickPlayer2Point} className="btn btn-primary">+</button>
+          </div>
+          <button disabled={disabled} onClick={this.onClickPlayer2Point} className="btn btn-primary">+</button>
       </div>
       { /* winner message */}
-      {winner === '' ? null : <h3 className="winner">  Player {winner} wins!</h3>}
+      {winner === '' ? null : <h3 className="winner animated bounceIn">  Player {winner} wins!</h3>}
       { /* reset button */}
       <button className="reset-button btn btn-success"onClick={this.onClickResetScore}>Reset</button>
   </Fragment>

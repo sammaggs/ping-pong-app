@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import FirstRound from "./FirstRound";
+import '../Styles/Fixtures.css'
 
 class FixturesList extends Component {
   constructor(props) {

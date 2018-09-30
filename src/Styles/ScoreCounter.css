@@ -1,0 +1,21 @@
+.score-counter-players {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px
+  }
+  
+  .player-serving {
+    background-color: #13ab54;
+    margin-left: 10px;
+    font-size: 0.6em;
+    border-radius: 20px;
+    padding: 5px;
+  }
+  
+  .player-p {
+    margin-right: 40px
+  }
+  
+  .winner {
+    margin-top: 10px
+  }

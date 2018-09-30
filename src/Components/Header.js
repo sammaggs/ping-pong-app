@@ -1,8 +1,9 @@
 import React from 'react';
-// import { Link } from "react-router-dom";
 import '../Styles/App.css';
 import '../Styles/Hover.css';
+import '../Styles/Header.css'
 import pingPongIcon from '../images/table-tennis.png';
+
 
 const Header = () => {
     return (

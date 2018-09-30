@@ -1,0 +1,36 @@
+/* Styling for fixture list div  */
+
+.fixture-div {
+  margin-top: 40px;
+}
+
+.round-num-styling {
+  margin-top: 20px;
+}
+
+/* styles each ul on fixtures */
+
+.fixture-list {
+    margin-top: 10px 0px 10px 0px;
+    display: inline-block;
+    width: 20em;
+  }
+
+/* Each individual fixture  */
+
+.fixture {
+  border: 1px solid white;
+  list-style: none;
+  font-size: 1.25em;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.fixture-disabled {
+    pointer-events:none;
+    opacity:0.6;
+    background-color: rgba(63, 63, 63, 0.68);
+  }
+
+  

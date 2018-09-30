@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import '../Styles/ScoreCounter.css';
 
 class ScoreCounter extends Component {
     constructor(props) {

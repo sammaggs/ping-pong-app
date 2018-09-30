@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-// import { onLoadMakeFixtures } from '../Utility/Helper';
+import ScoreCounter from './ScoreCounter';
 
 const winnerStyling = {
   backgroundColor: "rgb(191,155,48)"
@@ -95,7 +95,7 @@ class NextRounds extends Component {
             })
           : null}
       {roundFinished && matches.length > 1 ? <NextRounds roundNumber={roundNumber + 1} players={winners} /> : null}
-      {/* {winners.length === 1 ? <h2>{winners[0].player} Wins the Tourney!</h2> : null}  */}
+      {matches.length === 0 || roundFinished ? null : <ScoreCounter/>}
       </Fragment>
     );
   }

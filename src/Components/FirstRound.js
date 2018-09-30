@@ -101,7 +101,7 @@ class FirstRound extends Component {
             </div>
           );
         })}
-        <ScoreCounter />
+        {pairs.length === 0 || roundFinished ? null : <ScoreCounter/>}
         {roundFinished ? <NextRounds roundNumber={roundNumber + 1} players={winners} /> : null} 
         {/* only display next round once this round is finished */}
       </Fragment>

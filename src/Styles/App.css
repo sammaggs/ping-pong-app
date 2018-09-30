@@ -1744,7 +1744,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #E74C3C;
   border-color: #E74C3C;
-  border-radius: 40px
+  border-radius: 40px;
  }
   .btn-danger:hover {
     color: #fff;
@@ -6324,11 +6324,22 @@ a.text-dark:hover, a.text-dark:focus {
     margin-left: 15px
 }
 
+/* styles each ul on fixtures */
+
 .fixture-list {
   margin-top: 10px 0px 10px 0px;
   display: inline-block;
   width: 20em;
 }
+
+/* Styling for fixture list div  */
+
+
+.fixture-div {
+  margin-top: 40px,
+}
+
+/* Each individual fixture  */
 
 .fixture {
   border: 1px solid white;
@@ -6339,9 +6350,13 @@ a.text-dark:hover, a.text-dark:focus {
   color: white
 }
 
-.fixture-div {
-  margin-top: 40px,
+.fixture-disabled {
+  pointer-events:none;
+  opacity:0.6;
+  background-color: rgba(63, 63, 63, 0.68);
 }
+
+/* heading styles */
 
 .h5-styling {
   margin-top: 15px
@@ -6351,6 +6366,8 @@ a.text-dark:hover, a.text-dark:focus {
   margin-top: 20px
 }
 
+/* homepage logo styling  */
+
 .header-icon {
   margin: 20px 0px 20px 0px;
   height: 250px;
@@ -6358,8 +6375,4 @@ a.text-dark:hover, a.text-dark:focus {
   border-radius: 250px
 }
 
-.li-disabled {
-  pointer-events:none;
-  opacity:0.6;
-  background-color: rgba(63, 63, 63, 0.68);
-}
+

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './App.css';
 
-const Counter = ( {
+export const App = ( {
     player1, 
     player2, 
     onClickUpP1, 
@@ -17,18 +18,18 @@ const Counter = ( {
   <React.Fragment>
       {/* header */}
       <header className="page-header">
-          <h1>Counter</h1>
+          <h1>PongPing</h1>
       </header>
 
       {/* scores */}
       <div className="row">
-          <div>
+          <div className="col-xs-6">
               {serving ? <p>Player 1 <span class="label label-success">Serving</span></p> : <p>Player 1</p> }
               <p className="well">{player1}</p>
               {winner === '' ? <button onClick={onClickUpP1} className="btn btn-primary">+</button> : null}
           </div>
 
-          <div>
+          <div className="col-xs-6">
               {serving ? <p>Player 2</p> : <p>Player 2 <span class="label label-success">Serving</span></p> }
               <p className="well">{player2}</p>
               {winner === '' ? <button onClick={onClickUpP2} className="btn btn-primary">+</button> : null}
@@ -45,4 +46,3 @@ const Counter = ( {
   </React.Fragment>
   )};
 
-export default Counter;

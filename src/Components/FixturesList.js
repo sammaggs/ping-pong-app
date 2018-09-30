@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Matches from "./Matches";
+import FirstRound from "./FirstRound";
 
 class FixturesList extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class FixturesList extends Component {
     return (
       <Fragment>
           <h3>Fixtures</h3>
-        <Matches numberOfPlayers={numberOfPlayers} onClick={this.onClickMakeFixtures} pairs={pairs} />
+        <FirstRound numberOfPlayers={numberOfPlayers} onClick={this.onClickMakeFixtures} pairs={pairs} />
        {/* sending numberOfPlayers, fixture shuffling onClick and pairs(matches) */}
       </Fragment>
     );

@@ -1,12 +1,11 @@
 import React, { Fragment, Component } from "react";
-// import Button from "./Button";
 // import { onLoadMakeFixtures } from '../Utility/Helper';
 
 const winnerStyling = {
   backgroundColor: "rgb(191,155,48)"
 };
 
-class Rounds extends Component {
+class NextRounds extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +41,7 @@ class Rounds extends Component {
     }));
   }
 
-  componentDidMount() { // <Rounds> has loaded? Then call fixture shuffling function below.
+  componentDidMount() { // <NextRounds> has loaded? Then call fixture shuffling function below.
     this.onLoadMakeFixtures()
   }
 
@@ -67,6 +66,7 @@ class Rounds extends Component {
     return (
       <Fragment>
         {matches.length == 1 ? <h1>Final Round</h1> : <h1>Round { roundNumber } </h1>}
+        {winners.length === 1 && matches.length == 1 ? <h2>🏓   {winners[0].player} Wins the Tourney!   🏓</h2> : null}
         {matches.length > 0
           ? matches.map((match, i) => {
               let player1 = match[0];
@@ -80,13 +80,13 @@ class Rounds extends Component {
                   <ul className="list-unstyled fixture-list">
                     <li style={isWinner1 == null ? null : winnerStyling}
                         onClick={() => this.onClickWinnerP1(player1)}
-                        className={isWinner2 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"}>
+                        className={isWinner2 != null || isWinner1 != null ? "fixture-disabled fixture loser-styling" : "hvr-grow fixture"}>
                         {match[0].player}
                     </li>
                     <span>vs</span>
                     <li style={isWinner2 == null ? null : winnerStyling}
                         onClick={() => this.onClickWinnerP2(player2)}
-                        className={isWinner1 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"}>
+                        className={isWinner1 != null || isWinner2 != null ? "fixture-disabled fixture loser-styling" : "hvr-grow fixture"}>
                       {match[1].player}
                     </li>
                   </ul>
@@ -94,10 +94,11 @@ class Rounds extends Component {
               );
             })
           : null}
-      {roundFinished && matches.length > 1 ? <Rounds roundNumber={roundNumber + 1} players={winners} /> : null} 
+      {roundFinished && matches.length > 1 ? <NextRounds roundNumber={roundNumber + 1} players={winners} /> : null}
+      {/* {winners.length === 1 ? <h2>{winners[0].player} Wins the Tourney!</h2> : null}  */}
       </Fragment>
     );
   }
 }
 
-export default Rounds;
+export default NextRounds;

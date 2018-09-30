@@ -1,12 +1,13 @@
 import React, { Fragment, Component } from "react";
 import Button from "./Button";
-import Rounds from "./Rounds";
+import NextRounds from "./NextRounds";
+// import Counter from './Counter';
 
 const winnerStyling = {
   backgroundColor: "rgb(191,155,48)"
 };
 
-class Matches extends Component {
+class FirstRound extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,7 +74,7 @@ class Matches extends Component {
         />
         {this.numberOfRounds()} 
         {/*  ^^^ call function to display how many rounds to expect to user  */}
-        <h1>Round 1</h1>
+        {pairs.length > 1 ? <h1>Round 1</h1> : null}
         {pairs.map((pair, i) => { // map over pairs and split in 2, to create player1 & player2. 
           let player1 = [...pair];
           let player2 = player1.splice(0, Math.ceil(player1.length / 2));
@@ -86,25 +87,26 @@ class Matches extends Component {
                 <li
                   style={isWinner1 == null ? null : winnerStyling} // is winner? set winner styling / null
                   onClick={() => this.onClickWinnerP1(player1)} // sending player1 into clickhandler above
-                  className={isWinner2 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"}>
+                  className={isWinner2 != null || isWinner1 != null ? "fixture-disabled fixture loser-styling" : "hvr-grow fixture"}>
                   {player1}
                 </li>
                 <span>vs</span>
                 <li
                   style={isWinner2 == null ? null : winnerStyling} // is winner? set winner styling / null
                   onClick={() => this.onClickWinnerP2(player2)} // sending player1 into clickhandler above
-                  className={isWinner1 != null ? "li-disabled fixture loser-styling" : "hvr-grow fixture"}>
+                  className={isWinner1 != null || isWinner2 != null ? "fixture-disabled fixture loser-styling" : "hvr-grow fixture"}>
                   {player2}
                 </li>
               </ul>
             </div>
           );
         })}
-        {roundFinished ? <Rounds roundNumber={roundNumber + 1} players={winners} /> : null} 
+        {/* <Counter /> */}
+        {roundFinished ? <NextRounds roundNumber={roundNumber + 1} players={winners} /> : null} 
         {/* only display next round once this round is finished */}
       </Fragment>
     );
   }
 }
 
-export default Matches;
+export default FirstRound;

@@ -6,8 +6,8 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPlayers: 4, // dummy number for testing
-      playerNames: ["Sam", "Ricky", "Dan", "Aden"], // dummy data for testing.
+      numberOfPlayers: 8, // dummy number for testing
+      playerNames: ["Sam", "Ricky", "Dan", "Aden", "Ian", "Paul", "Jane", "Mo"], // dummy data for testing.
       playerName: "",
       numberOfPlayersValid: false,
       error: "",

@@ -84,12 +84,13 @@ class HomePage extends Component {
       numberOfPlayersValid,
       playerNames,
       numberOfPlayers,
+      error,
+      duplicateName
     } = this.state;
 
     return (
       <Fragment>
       <div className="animated fadeInLeftBig">
-        <h3>Welcome to the only Ping Pong TrnmntGnrtr you will ever need!</h3>
         {playerNames.length > 0 ? null : <h5>How many players are playing in your tournament?</h5>}
         {playerNames.length > 0 ? null :
         <Fragment>
@@ -135,6 +136,7 @@ class HomePage extends Component {
               />
             </Fragment>
           ) : null}
+        {duplicateName ? <h5 className="h5-styling">{error}</h5> : null}
         </div>
         {playerNames.length > 0 ? ( // will only display playerList if there are playernames in the state. 
           <Fragment>

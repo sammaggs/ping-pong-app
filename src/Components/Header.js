@@ -9,7 +9,8 @@ const Header = () => {
     return (
         <header>
             <div>
-                <img alt="table tennis logo" className="header-icon hvr-bob"src={pingPongIcon} />
+                <img alt="table tennis logo" className="header-icon animated pulse infinite"src={pingPongIcon} />
+                <h3 className="header-text">Ping Pong TrnmntGnrtr</h3>
             </div>
         </header>
     )

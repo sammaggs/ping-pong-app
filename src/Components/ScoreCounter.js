@@ -13,7 +13,7 @@ class ScoreCounter extends Component {
     this.onClickResetScore = this.onClickResetScore.bind(this)
 };
 
-onClickPlayer1Point() {
+onClickPlayer1Point() { // increments player 2 score and controls who serves 
     let player1Score = this.state.player1 + 1;
     let servePlayer1 = this.state.serving;
     const {player2, serving} = this.state;
@@ -28,7 +28,7 @@ onClickPlayer1Point() {
     })
 };
 
-onClickPlayer2Point() {
+onClickPlayer2Point() { // increments player 2 score and controls who serves 
     let player2Score = this.state.player2 + 1;
     let servePlayer2 = this.state.serving;
     const { player1, serving} = this.state;
@@ -43,7 +43,7 @@ onClickPlayer2Point() {
     })
 };
 
-onClickResetScore() {
+onClickResetScore() { // resets both players scores to 0.
     this.setState({
         player1: 0,
         player2: 0
@@ -53,29 +53,30 @@ onClickResetScore() {
   render() {
     const { player1, player2, serving} = this.state;
     const winner = player1 >= 21 && player1 >= player2 + 2 ? '1' : '' || player2 >= 21 && player2 >= player1 + 2 ? '2' : '';
+    // creates winner variable of "1" or "2" depending on who wins.
+    const disabled = winner === "1" || winner === "2" ? "disabled" : null; // used to control if increment buttons are disabled;
 
   return (
   <Fragment>
       {/* <header className="page-header">
           <h4>Keep track of your scores: </h4>
       </header> */}
-
+      
       {/* scores */}
       <div>
           <div className="score-counter-players">
               {serving ? <h4 className="player-p">Player 1 <span className="player-serving">Serving</span></h4> : <h4 className="player-p">Player 1</h4> }
               <h4>{player1}</h4>
           </div>
-          <button onClick={this.onClickPlayer1Point} className="btn btn-primary">+</button>
+          <button disabled={disabled} onClick={this.onClickPlayer1Point} className="btn btn-primary">+</button>
 
 
         <div className="score-counter-players">
               {serving ? <h4 className="player-p">Player 2</h4> : <h4 className="player-p">Player 2 <span className="player-serving">Serving</span></h4> }
               <h4>{player2}</h4>
         </div>
-        <button onClick={this.onClickPlayer2Point} className="btn btn-primary">+</button>
+        <button disabled={disabled} onClick={this.onClickPlayer2Point} className="btn btn-primary">+</button>
       </div>
-
       { /* winner message */}
       {winner === '' ? null : <h3 className="winner">  Player {winner} wins!</h3>}
       { /* reset button */}

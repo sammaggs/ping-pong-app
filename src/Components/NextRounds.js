@@ -66,7 +66,7 @@ class NextRounds extends Component {
     return (
       <Fragment>
         {matches.length == 1 ? <h1>Final Round</h1> : <h1>Round { roundNumber } </h1>}
-        {winners.length === 1 && matches.length == 1 ? <h2>🏓   {winners[0].player} Wins the Tourney!   🏓</h2> : null}
+        {winners.length === 1 && matches.length == 1 ? <h2 className="animated bounceIn">🏓   {winners[0].player} Wins the Tourney!   🏓</h2> : null}
         {matches.length > 0
           ? matches.map((match, i) => {
               let player1 = match[0];

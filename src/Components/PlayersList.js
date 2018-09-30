@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Button from "./Button";
+import DeleteIcon from '../images/delete-icon.png'
 
 const PlayerList = ({ onClickDelete, playerNames } ) => {
   
@@ -16,7 +17,7 @@ const PlayerList = ({ onClickDelete, playerNames } ) => {
                   <Button
                     onClick={() => onClickDelete(i)} // onclick that has been accepted as prop from HomPage with player index. 
                     className={"btn-danger btn"}
-                    buttonText={"x"}
+                    buttonText={<img src={DeleteIcon}/>}
                   />
                   </div>
               ))}

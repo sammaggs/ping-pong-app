@@ -29,7 +29,6 @@ class FixturesList extends Component {
 
     return (
       <Fragment>
-          <h3>Fixtures</h3>
         <FirstRound numberOfPlayers={numberOfPlayers} onClick={this.onClickMakeFixtures} pairs={pairs} />
        {/* sending numberOfPlayers, fixture shuffling onClick and pairs(matches) */}
       </Fragment>

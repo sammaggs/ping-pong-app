@@ -1740,16 +1740,17 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5); }
 
 .btn-danger {
-  margin: 0px 10px 0px 10px;
+  margin: 0px 20px 0px 0px;
   color: #fff;
-  background-color: #E74C3C;
-  border-color: #E74C3C;
+  background-color: black;
+  border-color: black;
   border-radius: 40px;
+  display: flex
  }
   .btn-danger:hover {
     color: #fff;
-    background-color: #e12e1c;
-    border-color: #d62c1a; }
+    background-color: #000000;
+    border-color: #000000; }
   .btn-danger:focus, .btn-danger.focus {
     box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.5); }
   .btn-danger.disabled, .btn-danger:disabled {
@@ -6324,6 +6325,10 @@ a.text-dark:hover, a.text-dark:focus {
     margin-left: 15px
 }
 
+.reset-button {
+  margin-top: 20px
+}
+
 /* styles each ul on fixtures */
 
 .fixture-list {
@@ -6373,6 +6378,28 @@ a.text-dark:hover, a.text-dark:focus {
   height: 250px;
   width: 250px;
   border-radius: 250px
+}
+
+.score-counter-players {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px
+}
+
+.player-serving {
+  background-color: #13ab54;
+  margin-left: 10px;
+  font-size: 0.6em;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.player-p {
+  margin-right: 40px
+}
+
+.winner {
+  margin-top: 10px
 }
 
 

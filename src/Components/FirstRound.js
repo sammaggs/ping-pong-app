@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import Button from "./Button";
 import NextRounds from "./NextRounds";
-// import Counter from './Counter';
+import ScoreCounter from './ScoreCounter';
 
 const winnerStyling = {
   backgroundColor: "rgb(191,155,48)"
@@ -26,7 +26,7 @@ class FirstRound extends Component {
     const numOfRounds = Math.ceil(Math.log(numberOfPlayers) / Math.log(2));
     return (
       <h4 className="h5-styling">
-        Your tournament will have {numOfRounds} rounds, enjoy!
+        {numOfRounds} rounds, enjoy!
       </h4>
     );
   }
@@ -101,7 +101,7 @@ class FirstRound extends Component {
             </div>
           );
         })}
-        {/* <Counter /> */}
+        <ScoreCounter />
         {roundFinished ? <NextRounds roundNumber={roundNumber + 1} players={winners} /> : null} 
         {/* only display next round once this round is finished */}
       </Fragment>

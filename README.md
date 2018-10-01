@@ -4,7 +4,7 @@ This is my version of the technical challenge set by DevelopMe at the end of the
 
 The project is a React app specifically designed for generating tournaments of 4, 8, or 16 players (can be increased easily).
 
-A live version of the app can be found at - http://samm.developme.space/
+A live version of the app can be found at - http://samm.developme.space/tabletennis
 
 ## Planning 
 

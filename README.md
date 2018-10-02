@@ -10,7 +10,7 @@ A live version of the app can be found at - http://samm.developme.space/tableten
 
 Several Wireframes were completed using Quirk Tools. 
 
-Other planning was done to think about the logic that would needed, and how to attack that from the start.
+Other planning was done to think about the logic that would be needed, and how to attack that from the start.
 
 Logic such as:
 
